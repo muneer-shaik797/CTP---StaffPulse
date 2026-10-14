@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}StaffPulse{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"><script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body><div class="app-shell">
+<aside class="sidebar"><a class="brand" href="{{ url_for('index') }}"><span class="brand-symbol">S</span><span><b>StaffPulse</b><small>EMPLOYEE PERFORMANCE STUDIO</small></span></a>
+<div class="nav-label">WORKSPACE</div><nav>
+<a class="nav-link {{ 'active' if request.endpoint == 'index' else '' }}" href="{{ url_for('index') }}"><span>▦</span> Dashboard</a>
+<a class="nav-link {{ 'active' if request.endpoint in ['employees_page','employee_detail','add_employee'] else '' }}" href="{{ url_for('employees_page') }}"><span>♙</span> Employee directory</a>
+<a class="nav-link {{ 'active' if request.endpoint == 'insights_page' else '' }}" href="{{ url_for('insights_page') }}"><span>◒</span> Performance insights</a>
+<a class="nav-link {{ 'active' if request.endpoint in ['development_actions_page','update_development_action_status'] else '' }}" href="{{ url_for('development_actions_page') }}"><span>✓</span> Growth plan</a>
+</nav><div class="sidebar-bottom"><div class="pulse-mark">✳</div><b>Clear goals. Stronger teams.</b><p>Use employee signals to plan timely support—not to label employees.</p><span class="demo-label"><i></i> DEMO WORKSPACE</span></div></aside>
+<main class="main-area"><header class="topbar"><div><div class="breadcrumb">PEOPLE OPERATIONS <span>/</span> {% block crumb %}OVERVIEW{% endblock %}</div><h1>{% block page_title %}Dashboard{% endblock %}</h1></div><div class="topbar-right"><span class="today-pill">● Local demo data</span><div class="admin-avatar">AD</div></div></header>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-wrap">{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+<footer class="footer"><span>STAFFPULSE · EMPLOYEE PERFORMANCE STUDIO</span><span>Prototype • Rule-based insights</span></footer></main></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script></body></html>

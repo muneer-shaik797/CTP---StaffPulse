@@ -1,0 +1,6 @@
+employee_code,metric_name,score,target_score,review_period
+EMP-1001,Goal Delivery,86,100,Q3 2026
+EMP-1001,Work Quality,91,100,Q3 2026
+EMP-1002,Teamwork,88,100,Q3 2026
+EMP-1003,Goal Delivery,52,100,Q3 2026
+EMP-1004,Teamwork,94,100,Q3 2026
